@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Home Page</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="A brand new site for testing various information about websites">
+		<meta name="keywords" content="Biswajit Paul,Magento,Wordpress,Presta Shop,Joomla">
+		<meta name="author" content="Biswajit Paul">
+		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+		<link href="patternLock.css"  rel="stylesheet" type="text/css" />
+	</head>
+<body>
+
+<div id="patternContainer"></div>
+<div id="patternHolder"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="patternLock.js"></script>
+<script type="text/javascript">
+	var lock1 = new PatternLock("#patternContainer",{
+		onDraw:function(pattern){			
+	        console.log(pattern);
+	        if( localStorage.lock_pattern )
+	        {
+				lock1.checkForPattern( localStorage.lock_pattern, function(){
+				    alert("You unlocked your app");			
+				    lock1.reset();	    
+				},function(){
+				    alert("Pattern is not correct");
+				    lock.error();
+				}); 	        					
+	        }
+	        else
+	        {
+	        	localStorage.setItem("lock_pattern", pattern);
+	        	lock1.reset();	
+	        }        
+    	}
+	});
+	
+	
+	var lock = new PatternLock('#patternHolder',{
+		
+	});
+</script>
+</body>
+</html>
